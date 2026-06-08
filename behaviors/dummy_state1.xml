@@ -2,7 +2,7 @@
   <BehaviorTree ID="DummyState1">
     <Sequence>
       <LogMessage message="Starting State 1 - Custom Action Example"/>
-      <Speak text="Hola 1"/>
+      <Speak text="Hola, soy Niko, tu perro guia"/>
       <LogMessage message="State 1 completed successfully"/>
     </Sequence>
   </BehaviorTree>

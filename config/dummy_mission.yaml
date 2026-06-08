@@ -16,12 +16,12 @@ orchestrator_libraries:
 
 # Packages that provide the external BT node plugins
 bt_nodes_packages:
-  - "dummy_bt_nodes"
+  - "social_bt_nodes"
 
 # Plugin libraries to load (BehaviorTree.CPP plugins)
 plugin_libraries:
-  - "libdummy_bt_nodes_plugin.so"
-  - "libdummy_robot_bt_nodes.so"
+  - "libsocial_bt_nodes_plugin.so"
+  #- "libdummy_robot_bt_nodes.so"
 
 # List of behaviors to create and manage
 behaviors:
