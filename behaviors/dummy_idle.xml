@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root BTCPP_format="4">
+  <BehaviorTree ID="Idle">
+    <SequenceWithMemory>
+      <Speak text="Hola"/>
+      <RetryUntilSuccessful num_attempts="-1">
+        <Sequence>
+          <Listen transcribed_text="{heard}" service_name="/stt_service"
+          timeout="10000"/>
+          <LogMessage message="{heard}"/>
+          <Extract
+            interest="Clasifica la intención del usuario en una sola palabra: guiado,
+              reconocimiento o busqueda. Devuelve exactamente una de esas tres palabras. Usa
+              guiado si el usuario quiere ir a un lugar, que le lleven, acompañen, guíen,
+              navegar hacia un destino o desplazarse a algún sitio. Usa busqueda solo si
+              quiere encontrar/localizar un objeto o persona cercana con la cámara. Usa
+              reconocimiento si quiere describir o explicar el entorno."
+            text="{heard}"
+            extracted_info="{action}"
+            service_name="/extract_service"
+            timeout="10000"/>
+         <Speak text="Perfecto, tu acción es "/>
+          <Speak
+          text="{action}"
+          service_name="/tts_service"
+          timeout="5000"/>
+        </Sequence>
+      </RetryUntilSuccessful>
+    </SequenceWithMemory>
+  </BehaviorTree>
+
+  <!-- Description of Node Models (used by Groot) -->
+  <TreeNodesModel>
+    <Action ID="Speak"
+            editable="true">
+      <input_port name="text"/>
+    </Action>
+  </TreeNodesModel>
+
+</root>

@@ -18,7 +18,7 @@
 #include "behaviortree_cpp/action_node.h"
 #include "rclcpp/rclcpp.hpp"
 
-namespace dummy_robot
+namespace robot_nico
 {
 namespace bt_nodes
 {
@@ -57,6 +57,6 @@ private:
 };
 
 }  // namespace bt_nodes
-}  // namespace dummy_robot
+}  // namespace robot_nico
 
 #endif  // DUMMY_ROBOT__BT_NODES__LOG_MESSAGE_ACTION_HPP_

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root BTCPP_format="4">
+  <BehaviorTree ID="Recognise">
+    <Sequence>
+      <LogMessage message="Iniciando reconocimiento"/>
+      <Speak text="Perfecto,  buscando."/>
+      <AnalyzeImage
+          prompt="Analiza la imagen como asistente para una persona ciega. El usuario quiere buscar algo en el entorno. Peticion original del usuario: {heard}. Usa esa peticion para saber que objeto, persona o lugar debe buscarse. Indica si lo ves en la imagen, donde esta de forma relativa (izquierda, centro, derecha, cerca, lejos) y una instruccion breve para orientarse hacia ello. Si no lo ves, di claramente que no aparece en la imagen y menciona elementos visibles utiles. Responde en espanol, breve y practico."
+          result="{seen}"
+          service_name="/analyze_image_service"
+          timeout="30000"/>
+      <Speak text="Te cuento."/>
+      <Speak text="{seen}"/>
+    </Sequence>
+  </BehaviorTree>
+
+  <!-- Description of Node Models (used by Groot) -->
+  <TreeNodesModel>
+    <Action ID="AnalyzeImage"
+            editable="true">
+      <input_port name="prompt"/>
+      <output_port name="result"/>
+      <input_port name="service_name"/>
+      <input_port name="timeout"/>
+    </Action>
+    <Action ID="LogMessage"
+            editable="true">
+      <input_port name="message"/>
+    </Action>
+    <Action ID="Speak"
+            editable="true">
+      <input_port name="text"/>
+    </Action>
+  </TreeNodesModel>
+
+</root>

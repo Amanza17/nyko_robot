@@ -1,18 +1,18 @@
-# LLM-guided configuration for dummy_robot — mission 2
+# LLM-guided configuration for robot_nico — mission 2
 # Scenario: robot guide in a museum escorts a lost visitor to the requested exhibit,
 # then checks back at the information desk to report the assistance.
 # Used to stress-test the LLM planning + BT generation pipeline with a different
 # context and data-flow pattern from llm_mission.yaml.
 #
 # Usage (with LLM nodes launched here):
-#   ros2 launch dummy_robot dummy_robot_llm.launch.py \
-#     mission_config:=$(ros2 pkg prefix dummy_robot)/share/dummy_robot/config/llm_mission_2.yaml \
+#   ros2 launch robot_nico robot_nico_llm.launch.py \
+#     mission_config:=$(ros2 pkg prefix robot_nico)/share/robot_nico/config/llm_mission_2.yaml \
 #     launch_llm_nodes:=true
 
 # ── Common fields ─────────────────────────────────────────────────────────────
-node_name: "dummy_robot_bt_node"
+node_name: "robot_nico_bt_node"
 orchestrator_type: "llm"
-package_name: "dummy_robot"
+package_name: "robot_nico"
 
 plugin_libraries:
   - "libdummy_bt_nodes_plugin.so"

@@ -17,7 +17,7 @@
 #include "ament_index_cpp/get_package_share_directory.hpp"
 
 #include "behavior_architecture/config_parser.hpp"
-#include "dummy_robot/dummy_robot_orchestrator.hpp"
+#include "robot_nico/robot_nico_orchestrator.hpp"
 
 int main(int argc, char * argv[])
 {
@@ -28,7 +28,7 @@ int main(int argc, char * argv[])
   if (argc >= 2) {
     config_file = argv[1];
   } else {
-    config_file = ament_index_cpp::get_package_share_directory("dummy_robot") +
+    config_file = ament_index_cpp::get_package_share_directory("robot_nico") +
       "/config/dummy_mission.yaml";
   }
 
@@ -45,7 +45,7 @@ int main(int argc, char * argv[])
   blackboard->set("node", node);
   behavior_architecture::setup_blackboard_from_config(blackboard, config);
 
-  auto orchestrator = std::make_shared<dummy_robot::DummyRobotOrchestrator>(blackboard);
+  auto orchestrator = std::make_shared<robot_nico::RobotNicoOrchestrator>(blackboard);
 
   // on_configure creates and registers the behavior runners from blackboard config
   orchestrator->trigger_transition(lifecycle_msgs::msg::Transition::TRANSITION_CONFIGURE);
@@ -58,7 +58,7 @@ int main(int argc, char * argv[])
   }
   executor.add_node(orchestrator->get_node_base_interface());
 
-  RCLCPP_INFO(rclcpp::get_logger("main"), "Dummy robot starting...");
+  RCLCPP_INFO(rclcpp::get_logger("main"), "Robot Nico starting...");
 
   executor.spin();
 

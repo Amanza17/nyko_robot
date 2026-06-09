@@ -12,9 +12,9 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "dummy_robot/bt_nodes/log_message_action.hpp"
+#include "robot_nico/bt_nodes/log_message_action.hpp"
 
-namespace dummy_robot
+namespace robot_nico
 {
 namespace bt_nodes
 {
@@ -56,4 +56,4 @@ BT::NodeStatus LogMessageAction::tick()
 }
 
 }  // namespace bt_nodes
-}  // namespace dummy_robot
+}  // namespace robot_nico

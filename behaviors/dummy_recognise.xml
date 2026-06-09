@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root BTCPP_format="4">
+  <BehaviorTree ID="Recognise">
+    <Sequence>
+      <AnalyzeImage prompt="Describe que hay delante, identifica obstaculos o personas cercanas, y menciona si parece haber una direccion segura para avanzar. Si es un objeto en concreto dime como llegar a él. Responde en espanol de forma breve y practica."
+                    result="{seen}"
+                    service_name="/analyze_image_service"
+                    timeout="20000"/>
+      <LogMessage message="Iniciando reconocimiento"/>
+      <Speak text="Voy a ver que hay por aquí. Dame un segundo."/>
+      <Speak text="Te cuento lo que veo:"/>
+      <Speak text="{seen}"/>
+    </Sequence>
+  </BehaviorTree>
+
+  <!-- Description of Node Models (used by Groot) -->
+  <TreeNodesModel>
+    <Action ID="AnalyzeImage"
+            editable="true">
+      <input_port name="prompt"/>
+      <input_port name="result"/>
+      <input_port name="service_name"/>
+      <input_port name="timeout"/>
+    </Action>
+    <Action ID="LogMessage"
+            editable="true">
+      <input_port name="message"/>
+    </Action>
+    <Action ID="Speak"
+            editable="true">
+      <input_port name="text"/>
+    </Action>
+  </TreeNodesModel>
+
+</root>

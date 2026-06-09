@@ -22,14 +22,14 @@ from launch_ros.actions import Node
 
 def generate_launch_description():
     """
-    Launch dummy robot with reusable follow_behavior from behavior_architecture.
+    Launch robot Nico with reusable follow_behavior from behavior_architecture.
     
     This demonstrates how to use behaviors from the behavior_architecture 
     reusable catalogue in your own robot package.
     """
     
     # Get package directory
-    pkg_dir = get_package_share_directory('dummy_robot')
+    pkg_dir = get_package_share_directory('robot_nico')
     config_file = os.path.join(pkg_dir, 'config', 'dummy_mission_with_follow.yaml')
     
     # Mission executor node (from behavior_architecture package)

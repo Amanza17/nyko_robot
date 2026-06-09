@@ -1,4 +1,4 @@
-# Example: Using Reusable Behaviors in dummy_robot
+# Example: Using Reusable Behaviors in robot_nico
 
 This example demonstrates how to use reusable behaviors from the `behavior_architecture` catalogue in your own robot package.
 
@@ -15,8 +15,8 @@ The `dummy_mission_with_follow.yaml` config demonstrates:
 See [config/dummy_mission_with_follow.yaml](config/dummy_mission_with_follow.yaml):
 
 ```yaml
-# Global package for dummy_robot's own behaviors
-package_name: "dummy_robot"
+# Global package for robot_nico's own behaviors
+package_name: "robot_nico"
 
 behaviors:
   # Your robot's behaviors (uses global package_name)
@@ -44,11 +44,11 @@ behaviors:
 ```bash
 # Build both packages
 cd ~/social_nao_ws
-colcon build --packages-select behavior_architecture dummy_robot
+colcon build --packages-select behavior_architecture robot_nico
 source install/setup.bash
 
 # Run with the reusable follow behavior
-ros2 launch dummy_robot dummy_robot_with_follow.launch.py
+ros2 launch robot_nico robot_nico_with_follow.launch.py
 ```
 
 ## Using in Your Orchestrator
@@ -56,7 +56,7 @@ ros2 launch dummy_robot dummy_robot_with_follow.launch.py
 To actually use the `follow_runner` in your state machine, modify your orchestrator:
 
 ```cpp
-// In dummy_robot_orchestrator.cpp
+// In robot_nico_orchestrator.cpp
 case State::STATE_2:
   if (check_behavior_finished()) {
     if (last_status_ == "SUCCESS") {

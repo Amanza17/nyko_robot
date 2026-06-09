@@ -18,15 +18,15 @@ from launch_ros.actions import Node
 
 
 def generate_launch_description():
-    """Launch the dummy robot behavior system."""
+    """Launch the robot Nico behavior system."""
     
-    dummy_robot_node = Node(
-        package='dummy_robot',
-        executable='dummy_robot_main',
+    robot_nico_node = Node(
+        package='robot_nico',
+        executable='robot_nico_main',
         output='screen',
         parameters=[],
     )
 
     return LaunchDescription([
-        dummy_robot_node,
+        robot_nico_node,
     ])

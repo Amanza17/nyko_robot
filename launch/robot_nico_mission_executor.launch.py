@@ -21,10 +21,10 @@ from launch_ros.actions import Node
 
 
 def generate_launch_description():
-    """Launch the dummy robot using the generic mission executor."""
+    """Launch the robot Nico using the generic mission executor."""
     
     # Get package directory
-    pkg_dir = get_package_share_directory('dummy_robot')
+    pkg_dir = get_package_share_directory('robot_nico')
     config_file = os.path.join(pkg_dir, 'config', 'dummy_mission.yaml')
     
     # Mission executor node (from behavior_architecture package)

@@ -13,10 +13,10 @@
 // limitations under the License.
 
 #include "behaviortree_cpp/bt_factory.h"
-#include "dummy_robot/bt_nodes/log_message_action.hpp"
+#include "robot_nico/bt_nodes/log_message_action.hpp"
 
 // Plugin registration with extern "C" linkage for dynamic loading
 BT_REGISTER_NODES(factory)
 {
-  factory.registerNodeType<dummy_robot::bt_nodes::LogMessageAction>("LogMessage");
+  factory.registerNodeType<robot_nico::bt_nodes::LogMessageAction>("LogMessage");
 }

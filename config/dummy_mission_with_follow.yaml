@@ -1,19 +1,19 @@
-# Configuration for dummy robot with reusable follow behavior
+# Configuration for robot Nico with reusable follow behavior
 # This demonstrates using a reusable behavior from behavior_architecture package
-# alongside dummy_robot's own behaviors
+# alongside robot_nico's own behaviors
 
 # Node name for the ROS blackboard node
-node_name: "dummy_robot_bt_node"
+node_name: "robot_nico_bt_node"
 
 # Type of orchestrator to use (must be registered in OrchestratorFactory)
-orchestrator_type: "dummy_robot"
+orchestrator_type: "robot_nico"
 
 # Global package name for behaviors without explicit package_name
-package_name: "dummy_robot"
+package_name: "robot_nico"
 
 # Orchestrator libraries to load (contains the orchestrator registration)
 orchestrator_libraries:
-  - "libdummy_robot_orchestrator.so"
+  - "librobot_nico_orchestrator.so"
 
 # Packages that provide the external BT node plugins
 bt_nodes_packages:
@@ -22,11 +22,11 @@ bt_nodes_packages:
 # Plugin libraries to load (BehaviorTree.CPP plugins)
 plugin_libraries:
   - "libsocial_bt_nodes_plugin.so"
-  - "libdummy_robot_bt_nodes.so"
+  - "librobot_nico_bt_nodes.so"
 
 # List of behaviors to create and manage
 behaviors:
-  # Dummy robot's own behaviors (use global package_name)
+  # Robot Nico's own behaviors (use global package_name)
   - name: "state1_runner"
     behavior_file: "behaviors/dummy_state1.xml"
     control_period_ms: 50
@@ -46,4 +46,4 @@ behaviors:
 #   add_activation("follow_runner");
 # 
 # The orchestrator logic (states, transitions) is implemented in C++
-# See dummy_robot_orchestrator.cpp for the state machine implementation
+# See robot_nico_orchestrator.cpp for the state machine implementation

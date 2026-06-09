@@ -1,18 +1,18 @@
-# Configuration for dummy robot behavior example
+# Configuration for robot Nico behavior example
 # This demonstrates a simple 2-state FSM with custom BehaviorTree nodes
 
 # Node name for the ROS blackboard node
-node_name: "dummy_robot_bt_node"
+node_name: "robot_nico_bt_node"
 
 # Type of orchestrator to use (must be registered in OrchestratorFactory)
-orchestrator_type: "dummy_robot"
+orchestrator_type: "robot_nico"
 
 # Package name for resolving relative paths
-package_name: "dummy_robot"
+package_name: "robot_nico"
 
 # Orchestrator libraries to load (contains the orchestrator registration)
 orchestrator_libraries:
-  - "libdummy_robot_orchestrator.so"
+  - "librobot_nico_orchestrator.so"
 
 # Packages that provide the external BT node plugins
 bt_nodes_packages:
@@ -21,16 +21,29 @@ bt_nodes_packages:
 # Plugin libraries to load (BehaviorTree.CPP plugins)
 plugin_libraries:
   - "libsocial_bt_nodes_plugin.so"
-  #- "libdummy_robot_bt_nodes.so"
+  #- "librobot_nico_bt_nodes.so"
 
 # List of behaviors to create and manage
 behaviors:
   # First state behavior
-  - name: "state1_runner"
-    behavior_file: "behaviors/dummy_state1.xml"
+  - name: "idle_runner"
+    behavior_file: "behaviors/dummy_idle.xml"
     control_period_ms: 50
   
   # Second state behavior
-  - name: "state2_runner"
-    behavior_file: "behaviors/dummy_state2.xml"
+  - name: "cross_runner"
+    behavior_file: "behaviors/dummy_cross.xml"
+    control_period_ms: 50
+
+  - name: "guide_runner"
+    behavior_file: "behaviors/dummy_guide.xml"
+    control_period_ms: 50
+  
+  # Second state behavior
+  - name: "recognise_runner"
+    behavior_file: "behaviors/dummy_recognise.xml"
+    control_period_ms: 50
+
+  - name: "search_runner"
+    behavior_file: "behaviors/dummy_search.xml"
     control_period_ms: 50

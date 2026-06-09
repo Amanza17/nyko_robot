@@ -46,9 +46,9 @@ def launch_setup(context, *args, **kwargs):
     )
     save_exec_arg = LaunchConfiguration('save_exec').perform(context).lower() == 'true'
 
-    # If it's just a filename, assume it's in dummy_robot/config
+    # If it's just a filename, assume it's in robot_nico/config
     if not os.path.isabs(mission_file):
-        pkg_dir = get_package_share_directory('dummy_robot')
+        pkg_dir = get_package_share_directory('robot_nico')
         mission_file = os.path.join(pkg_dir, 'config', mission_file)
 
     with open(mission_file, 'r') as f:
@@ -145,7 +145,7 @@ def launch_setup(context, *args, **kwargs):
 
 
 def generate_launch_description():
-    """Launch the dummy_robot behavior system in LLM-guided mode.
+    """Launch the robot_nico behavior system in LLM-guided mode.
 
     Nodes started:
       1. llm_planner_node    — generates step-by-step task plans via LLM    (optional)
@@ -162,25 +162,25 @@ def generate_launch_description():
 
     Example:
       # LLM nodes already running externally:
-      ros2 launch dummy_robot dummy_robot_llm.launch.py
+      ros2 launch robot_nico robot_nico_llm.launch.py
 
       # Start everything from scratch:
-      ros2 launch dummy_robot dummy_robot_llm.launch.py launch_llm_nodes:=true
+      ros2 launch robot_nico robot_nico_llm.launch.py launch_llm_nodes:=true
 
       # Custom config:
-      ros2 launch dummy_robot dummy_robot_llm.launch.py \\
+      ros2 launch robot_nico robot_nico_llm.launch.py \\
         mission_file:=guide_mission.yaml launch_llm_nodes:=true
     """
-    pkg_dir = get_package_share_directory('dummy_robot')
+    pkg_dir = get_package_share_directory('robot_nico')
     default_config = os.path.join(pkg_dir, 'config', 'waiter_mission_checking.yaml')
-    default_skills = os.path.join(pkg_dir, 'config', 'dummy_robot_skills.yaml')
+    default_skills = os.path.join(pkg_dir, 'config', 'robot_nico_skills.yaml')
 
     mission_file_arg = DeclareLaunchArgument(
         'mission_file',
         default_value=default_config,
         description=(
             'Path to the unified YAML mission file '
-            '(orchestrator_type must be "llm"). Can be a filename in dummy_robot/config.'
+            '(orchestrator_type must be "llm"). Can be a filename in robot_nico/config.'
         ),
     )
 

@@ -1,18 +1,18 @@
-# LLM-guided configuration for dummy_robot
+# LLM-guided configuration for robot_nico
 # orchestrator_type: "llm" tells behavior_architecture to use the LLM planning
 # pipeline (llm_planner + llm_bt_builder + LLMPlanOrchestrator) instead of the
-# fixed state-machine orchestrator defined in dummy_robot_orchestrator.cpp.
+# fixed state-machine orchestrator defined in robot_nico_orchestrator.cpp.
 #
 # Usage (with LLM nodes launched here):
-#   ros2 launch dummy_robot dummy_robot_llm.launch.py launch_llm_nodes:=true
+#   ros2 launch robot_nico robot_nico_llm.launch.py launch_llm_nodes:=true
 #
 # Usage (LLM nodes already running):
-#   ros2 launch dummy_robot dummy_robot_llm.launch.py
+#   ros2 launch robot_nico robot_nico_llm.launch.py
 
 # ── Common fields ─────────────────────────────────────────────────────────────
-node_name: "dummy_robot_bt_node"
+node_name: "robot_nico_bt_node"
 orchestrator_type: "llm"
-package_name: "dummy_robot"
+package_name: "robot_nico"
 
 # BT plugin that provides the action nodes available to the LLM BT builder.
 plugin_libraries:
@@ -39,7 +39,7 @@ bt_builder_llm_api_key: ""
 
 # ── Goal definition ───────────────────────────────────────────────────────────
 # Sent to llm_planner at start-up via the /start_mission service.
-# Skills are defined in dummy_robot_skills.yaml and passed via the 'skills_file' launch arg.
+# Skills are defined in robot_nico_skills.yaml and passed via the 'skills_file' launch arg.
 # ── Execution logging ─────────────────────────────────────────────────────────
 # save_exec: true  → saves generated BT XMLs to <exec_dir>/<mission_name>/<timestamp>/
 # Can also be enabled at launch time with save_exec:=true

@@ -1,12 +1,12 @@
-# dummy_robot_skills.yaml
-# Capabilities available to the dummy_robot in this deployment.
+# robot_nico_skills.yaml
+# Capabilities available to the robot_nico in this deployment.
 # This file is passed to test_start_mission via the 'skills_file' launch argument
 # and its contents are forwarded to every plan/replan request so the LLM
 # plans exclusively within this capability envelope.
 #
 # Usage:
-#   ros2 launch dummy_robot dummy_robot_llm.launch.py \
-#     skills_file:=$(ros2 pkg prefix dummy_robot)/share/dummy_robot/config/dummy_robot_skills.yaml
+#   ros2 launch robot_nico robot_nico_llm.launch.py \
+#     skills_file:=$(ros2 pkg prefix robot_nico)/share/robot_nico/config/robot_nico_skills.yaml
 
 skills:
   - "Speak using text-to-speech"

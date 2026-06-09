@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.8)
-project(dummy_robot)
+project(robot_nico)
 
 if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
   add_compile_options(-Wall -Wextra -Wpedantic)
@@ -29,13 +29,13 @@ include_directories(
   include
 )
 
-# Dummy robot orchestrator library (for use with mission_executor)
+# Robot Nico orchestrator library (for use with mission_executor)
 add_library(${PROJECT_NAME}_orchestrator SHARED
-  src/dummy_robot_orchestrator.cpp
+  src/robot_nico_orchestrator.cpp
 )
 ament_target_dependencies(${PROJECT_NAME}_orchestrator ${dependencies})
 
-# Dummy robot BT nodes plugin library
+# Robot Nico BT nodes plugin library
 add_library(${PROJECT_NAME}_bt_nodes SHARED
   src/bt_nodes/bt_plugins.cpp
   src/bt_nodes/log_message_action.cpp
@@ -52,19 +52,19 @@ install(TARGETS ${PROJECT_NAME}_orchestrator ${PROJECT_NAME}_bt_nodes
   RUNTIME DESTINATION bin
 )
 
-# Dummy robot orchestrator executable (original/legacy main)
-add_executable(dummy_robot_main
-  src/dummy_robot_main.cpp
-  src/dummy_robot_orchestrator.cpp
+# Robot Nico orchestrator executable (original/legacy main)
+add_executable(robot_nico_main
+  src/robot_nico_main.cpp
+  src/robot_nico_orchestrator.cpp
   src/bt_nodes/log_message_action.cpp
 )
 
-ament_target_dependencies(dummy_robot_main ${dependencies})
-target_link_libraries(dummy_robot_main yaml-cpp)
+ament_target_dependencies(robot_nico_main ${dependencies})
+target_link_libraries(robot_nico_main yaml-cpp)
 
 # Install executables
 install(TARGETS
-  dummy_robot_main
+  robot_nico_main
   DESTINATION lib/${PROJECT_NAME}
 )
 

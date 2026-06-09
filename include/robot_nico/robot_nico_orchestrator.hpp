@@ -17,22 +17,22 @@
 
 #include "behavior_architecture/base_orchestrator.hpp"
 
-namespace dummy_robot
+namespace robot_nico
 {
 
 /**
- * @brief Dummy robot orchestrator - manages robot behavior states
+ * @brief Robot Nico orchestrator - manages robot behavior states
  * 
  * Simple finite state machine with two states that execute different behaviors
  */
-class DummyRobotOrchestrator : public behavior_architecture::BaseOrchestrator
+class RobotNicoOrchestrator : public behavior_architecture::BaseOrchestrator
 {
 public:
   /**
    * @brief Constructor
    * @param blackboard Shared blackboard for communication
    */
-  explicit DummyRobotOrchestrator(BT::Blackboard::Ptr blackboard);
+  explicit RobotNicoOrchestrator(BT::Blackboard::Ptr blackboard);
 
 protected:
   /**
@@ -55,14 +55,17 @@ protected:
 private:
   enum class State {
     INIT,
-    STATE_1,
-    STATE_2,
+    IDLE,
+    GUIDE,
+    CROSS,
+    RECOGNISE,
+    SEARCH,
     STOP
   };
 
   State state_;
 };
 
-}  // namespace dummy_robot
+}  // namespace robot_nico
 
 #endif  // DUMMY_ROBOT__DUMMY_ROBOT_ORCHESTRATOR_HPP_
